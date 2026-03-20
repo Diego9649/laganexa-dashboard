@@ -2608,8 +2608,8 @@ const KITS_DATA = [
 ];
 
 // Build lookup: handle → kit info
-const KITS_MAP = {};
-KITS_DATA.forEach(k => { KITS_MAP[k.handle.toLowerCase()] = k; });
+window.KITS_MAP = {};
+KITS_DATA.forEach(k => { window.KITS_MAP[k.handle.toLowerCase()] = k; });
 
 let kitsFilterTipo = 'todos';
 let kitsFilterText = '';
