@@ -1782,6 +1782,31 @@ function filterInfBy(tipo, btn) {
   document.querySelectorAll('#page-influenciadores .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active'); infFilter.tipo = tipo; renderInfTable();
 }
+function saveInfField(handle, field, value) {
+  const inf = window.INF.find(i => i.handle === handle);
+  if (!inf) return;
+  if (field === 'gold') value = value === 'true' || value === true;
+  inf[field] = value;
+  const id = handle.toLowerCase().replace(/[^a-z0-9]/g,'_');
+  if (window._saveToFirestore) window._saveToFirestore('influenciadores', id, {[field]: value});
+}
+
+function editCell(el, handle, field, current) {
+  const inp = document.createElement('input');
+  inp.value = current || '';
+  inp.style.cssText = 'background:var(--surface3);border:1px solid var(--laranja);border-radius:4px;padding:2px 6px;font-size:11px;color:var(--text);width:100%;font-family:"DM Sans",sans-serif;outline:none';
+  el.innerHTML = '';
+  el.appendChild(inp);
+  inp.focus();
+  inp.select();
+  const save = () => {
+    saveInfField(handle, field, inp.value);
+    renderInfTable();
+  };
+  inp.addEventListener('blur', save);
+  inp.addEventListener('keydown', e => { if(e.key==='Enter') inp.blur(); if(e.key==='Escape') renderInfTable(); });
+}
+
 function renderInfTable() {
   const q = infFilter.text.toLowerCase();
   const t = infFilter.tipo;
@@ -1800,27 +1825,53 @@ function renderInfTable() {
     const cupomStatus = i.cupomStatus === 'pendente'
       ? `<span class="cupom-pend">⏳ pendente</span>`
       : `<span class="cupom-ok">✅ criado</span>`;
+    const editStyle = 'cursor:pointer;border-bottom:1px dashed var(--border2)' ;
     return `
     <tr>
       <td style="color:var(--muted);font-size:10px">${idx+1}</td>
-      <td>
-        <div style="font-weight:600;font-size:12px">${i.nome}</div>
-        ${i.gold ? '<span class="tag tag-gold" style="font-size:9px">⭐ GOLD</span>' : ''}
+      <td onclick="editCell(this,'${i.handle}','nome','${(i.nome||'').replace(/'/g,"\\'")}')">
+        <div style="font-weight:600;font-size:12px;${editStyle}">${i.nome}</div>
+        <label style="cursor:pointer;font-size:9px;color:${i.gold?'var(--gold-c)':'var(--muted)'}">
+          <input type="checkbox" ${i.gold?'checked':''} onchange="saveInfField('${i.handle}','gold',this.checked);this.closest('tr').querySelector('.gold-tag').style.display=this.checked?'inline':'none'" style="width:10px;height:10px;margin-right:3px;accent-color:var(--gold-c)">
+          GOLD
+        </label>
+        <span class="gold-tag tag tag-gold" style="font-size:9px;${i.gold?'':'display:none'}">⭐ GOLD</span>
       </td>
       <td><span style="color:var(--laranja);font-family:monospace;font-size:11px">@${i.handle}</span></td>
-      <td><span class="tag ${i.rede==='Instagram'?'tag-inst':'tag-tt'}">${i.rede==='Instagram'?'📸':'🎵'} ${i.rede}</span></td>
-      <td style="font-weight:600;color:var(--text)">${i.follows||'-'}</td>
-      <td><span class="tag ${i.tipo.includes('VALOR')?'tag-fix':'tag-perm'}">${i.tipo}</span></td>
       <td>
-        <code>${i.cupom||'-'}</code>
+        <select onchange="saveInfField('${i.handle}','rede',this.value)" style="background:var(--surface3);border:1px solid var(--border);border-radius:5px;padding:2px 5px;font-size:10px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none">
+          <option ${i.rede==='Instagram'?'selected':''}>Instagram</option>
+          <option ${i.rede==='Tiktok'?'selected':''}>Tiktok</option>
+          <option ${i.rede==='Youtube'?'selected':''}>Youtube</option>
+        </select>
+      </td>
+      <td onclick="editCell(this,'${i.handle}','follows','${i.follows||''}')" style="${editStyle};font-weight:600;color:var(--text)">${i.follows||'-'}</td>
+      <td>
+        <select onchange="saveInfField('${i.handle}','tipo',this.value)" style="background:var(--surface3);border:1px solid var(--border);border-radius:5px;padding:2px 5px;font-size:10px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none">
+          <option ${i.tipo==='PERMUTA'?'selected':''}>PERMUTA</option>
+          <option ${i.tipo==='VALOR FIXO'?'selected':''}>VALOR FIXO</option>
+        </select>
+      </td>
+      <td onclick="editCell(this,'${i.handle}','cupom','${i.cupom||''}')">
+        <code style="${editStyle}">${i.cupom||'-'}</code>
         <div style="margin-top:3px">${cupomStatus}</div>
       </td>
       <td>${getRoi3Badge(i.handle)}</td>
-      <td style="font-size:11px;color:var(--muted)">${i.cidade?i.cidade+' ':''}${i.uf||''}</td>
-      <td style="font-size:11px;color:var(--muted);white-space:nowrap">${i.tel||'-'}</td>
-      <td style="font-size:11px">${i.inicio||'-'}</td>
-      <td>${i.mes?`<span class="tag tag-mar">${i.mes}</span>`:''}</td>
-      <td style="font-size:10.5px;color:var(--muted);max-width:180px">${((i.obs||'').slice(0,60)+(i.obs&&i.obs.length>60?'…':''))}</td>
+      <td onclick="editCell(this,'${i.handle}','cidade','${(i.cidade||'').replace(/'/g,"\\'")}')">
+        <span style="font-size:11px;color:var(--muted);${editStyle}">${i.cidade||'-'}</span>
+      </td>
+      <td onclick="editCell(this,'${i.handle}','tel','${i.tel||''}')">
+        <span style="font-size:11px;color:var(--muted);white-space:nowrap;${editStyle}">${i.tel||'-'}</span>
+      </td>
+      <td onclick="editCell(this,'${i.handle}','inicio','${i.inicio||''}')">
+        <span style="font-size:11px;${editStyle}">${i.inicio||'-'}</span>
+      </td>
+      <td onclick="editCell(this,'${i.handle}','mes','${i.mes||''}')">
+        ${i.mes?`<span class="tag tag-mar" style="${editStyle}">${i.mes}</span>`:`<span style="font-size:10px;color:var(--muted2);${editStyle}">—</span>`}
+      </td>
+      <td onclick="editCell(this,'${i.handle}','obs','${(i.obs||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')">
+        <span style="font-size:10.5px;color:var(--muted);max-width:180px;display:block;${editStyle}">${((i.obs||'').slice(0,60)+(i.obs&&i.obs.length>60?'…':''))}</span>
+      </td>
     </tr>`;
   }).join('');
 }
