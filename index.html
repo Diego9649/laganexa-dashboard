@@ -1964,7 +1964,9 @@ function toggleCLItem(panelId, secId, itemId) {
   const summaryId = panelId==='checklist-panel'?'cl-summary':'cl-summary2';
   renderCL(panelId, summaryId, fillId);
   document.getElementById(panelId+'-'+secId).classList.add('open');
+  if(window._saveToFirestore) window._saveToFirestore('checklist', secId, {items: sec.items});
 }
+
 function addCLTask(panelId, secId) {
   const inp = document.getElementById(`${panelId}-inp-${secId}`);
   const txt = inp.value.trim(); if(!txt) return;
@@ -2062,8 +2064,8 @@ function deleteMencao(id) {
 
 function saveMencoes() {
   try { localStorage.setItem('ganexa_mencoes', JSON.stringify(mencoes)); } catch(e){}
+  if(window._saveToFirestore) window._saveToFirestore('postagens', 'mencoes_lista', {mencoes});
 }
-
 function filterMencBy(rede, btn) {
   document.querySelectorAll('#page-mencoes .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -2636,6 +2638,7 @@ function toggleKitConfirmado(handle) {
     k.confirmou = !k.confirmou;
     renderKitsTable();
     renderKitsEspeciais();
+    if(window._saveToFirestore) window._saveToFirestore('kits', handle.toLowerCase().replace(/[^a-z0-9]/g,'_'), k);
   }
 }
 
@@ -2646,6 +2649,7 @@ function setKitStatus(handle, status) {
     renderKitsTable();
     renderKitsEspeciais();
     renderKitsMesBars();
+    if(window._saveToFirestore) window._saveToFirestore('kits', handle.toLowerCase().replace(/[^a-z0-9]/g,'_'), k);
   }
 }
 
