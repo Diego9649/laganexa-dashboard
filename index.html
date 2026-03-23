@@ -2665,6 +2665,19 @@ KITS_DATA.forEach(k => { window.KITS_MAP[k.handle.toLowerCase()] = k; });
 let kitsFilterTipo = 'todos';
 let kitsFilterText = '';
 
+function saveKitField(handle, field, value) {
+  if(!window.KITS_MAP[handle.toLowerCase()]) {
+    window.KITS_MAP[handle.toLowerCase()] = {handle, kitStatus:'pendente', kitObs:'', dataEnvio:'', confirmou:false, especial:''};
+  }
+  const k = window.KITS_MAP[handle.toLowerCase()];
+  if(field==='gold') value = value===true||value==='true';
+  k[field] = value;
+  if(window._saveToFirestore) window._saveToFirestore('kits', handle.toLowerCase().replace(/[^a-z0-9]/g,'_'), k);
+  renderKitsTable();
+  renderKitsEspeciais();
+  renderKitsMesBars();
+}
+
 function editKitCell(el, handle, field, current) {
   const inp = document.createElement('input');
   inp.value = current || '';
@@ -2673,13 +2686,7 @@ function editKitCell(el, handle, field, current) {
   el.appendChild(inp);
   inp.focus();
   inp.select();
-  const save = () => {
-    const k = window.KITS_MAP[handle.toLowerCase()];
-    if (!k) { renderKitsTable(); return; }
-    k[field] = inp.value;
-    if(window._saveToFirestore) window._saveToFirestore('kits', handle.toLowerCase().replace(/[^a-z0-9]/g,'_'), k);
-    renderKitsTable();
-  };
+  const save = () => { saveKitField(handle, field, inp.value); };
   inp.addEventListener('blur', save);
   inp.addEventListener('keydown', e => { if(e.key==='Enter') inp.blur(); if(e.key==='Escape') renderKitsTable(); });
 }
@@ -2787,38 +2794,50 @@ function renderKitsTable() {
     'problema':   'background:rgba(245,158,11,.12);color:#FCD34D;border:1px solid rgba(245,158,11,.2)',
   };
 
+  const es = 'cursor:pointer;border-bottom:1px dashed var(--border2)';
   document.getElementById('kits-tbody').innerHTML = filtered.map((i,idx) => {
     const ss = statusStyle[i.kitStatus] || statusStyle['pendente'];
     const confirmStyle = i.confirmou
       ? 'background:rgba(52,168,90,.15);color:#34D399;border:1px solid rgba(52,168,90,.25)'
       : 'background:var(--surface3);color:var(--muted);border:1px solid var(--border)';
+    const selStyle = 'background:var(--surface3);border:1px solid var(--border);border-radius:5px;padding:2px 5px;font-size:10px;color:var(--text);font-family:"DM Sans",sans-serif;outline:none';
     return `
     <tr>
       <td style="color:var(--muted);font-size:10px">${idx+1}</td>
       <td>
-        <div onclick="editKitCell(this,'${i.handle}','nome','${(i.nome||'').replace(/'/g,"\\'")}')" style="font-weight:600;font-size:12px;cursor:pointer;border-bottom:1px dashed var(--border2)">${i.nome.split(' ').slice(0,3).join(' ')}</div>
-        ${i.gold?'<span class="tag tag-gold" style="font-size:9px">⭐ GOLD</span>':''}
+        <div onclick="editKitCell(this,'${i.handle}','nome','${(i.nome||'').replace(/'/g,"\\'")}')" style="font-weight:600;font-size:12px;${es}">${i.nome.split(' ').slice(0,3).join(' ')}</div>
+        <label style="cursor:pointer;font-size:9px;color:${i.gold?'var(--gold-c)':'var(--muted)'}">
+          <input type="checkbox" ${i.gold?'checked':''} onchange="saveKitField('${i.handle}','gold',this.checked)" style="width:10px;height:10px;margin-right:3px;accent-color:var(--gold-c)"> GOLD
+        </label>
       </td>
-      <td><span style="color:var(--laranja);font-family:monospace;font-size:11px">@${i.handle}</span></td>
-      <td><span class="tag ${i.rede==='Instagram'?'tag-inst':'tag-tt'}">${i.rede==='Instagram'?'📸':'🎵'} ${i.rede}</span></td>
-      <td style="font-weight:600">${i.follows||'—'}</td>
+      <td onclick="editKitCell(this,'${i.handle}','handle','${i.handle}')" style="${es}">
+        <span style="color:var(--laranja);font-family:monospace;font-size:11px">@${i.handle}</span>
+      </td>
+      <td>
+        <select onchange="saveKitField('${i.handle}','rede',this.value)" style="${selStyle}">
+          <option ${i.rede==='Instagram'?'selected':''}>Instagram</option>
+          <option ${i.rede==='Tiktok'?'selected':''}>Tiktok</option>
+          <option ${i.rede==='Youtube'?'selected':''}>Youtube</option>
+        </select>
+      </td>
+      <td onclick="editKitCell(this,'${i.handle}','follows','${i.follows||''}')" style="${es};font-weight:600">${i.follows||'—'}</td>
       <td>
         <span style="${ss};padding:3px 8px;border-radius:5px;font-size:10.5px;font-weight:700;display:inline-block">
-          ${i.kitStatus==='enviado'?'✅ Enviado':i.kitStatus==='pendente'?'⏳ Pendente':'📦 '+i.kitStatus}
+          ${i.kitStatus==='enviado'?'✅ Enviado':i.kitStatus==='pendente'?'⏳ Pendente':i.kitStatus==='confirmado'?'🎉 Confirmado':'⚠️ Problema'}
         </span>
       </td>
-      <td onclick="editKitCell(this,'${i.handle}','kitObs','${(i.kitObs||'').replace(/'/g,"\\'")}')" style="font-size:11px;max-width:160px;color:${i.especial?'#FCD34D':'var(--muted)'};cursor:pointer;border-bottom:1px dashed var(--border2)">${i.kitObs||'—'}</td>
-      <td onclick="editKitCell(this,'${i.handle}','cidade','${(i.cidade||'').replace(/'/g,"\\'")}')" style="font-size:11px;color:var(--muted);cursor:pointer;border-bottom:1px dashed var(--border2)">${i.cidade||'—'} ${i.uf||''}</td>
-      <td onclick="editKitCell(this,'${i.handle}','numero','${(i.numero||'').replace(/'/g,"\\'")}')" style="font-size:10px;color:var(--muted2);max-width:180px;cursor:pointer;border-bottom:1px dashed var(--border2)">${(i.numero||'—')}</td>
-      <td onclick="editKitCell(this,'${i.handle}','dataEnvio','${(i.dataEnvio||'').replace(/'/g,"\\'")}')" style="font-size:11px;white-space:nowrap;color:var(--muted);cursor:pointer;border-bottom:1px dashed var(--border2)">${i.dataEnvio||'—'}</td>
+      <td onclick="editKitCell(this,'${i.handle}','kitObs','${(i.kitObs||'').replace(/'/g,"\\'")}')" style="font-size:11px;max-width:160px;color:${i.especial?'#FCD34D':'var(--muted)'};${es}">${i.kitObs||'—'}</td>
+      <td onclick="editKitCell(this,'${i.handle}','cidade','${(i.cidade||'').replace(/'/g,"\\'")}')" style="font-size:11px;color:var(--muted);${es}">${i.cidade||'—'} ${i.uf||''}</td>
+      <td onclick="editKitCell(this,'${i.handle}','numero','${(i.numero||'').replace(/'/g,"\\'")}')" style="font-size:10px;color:var(--muted2);max-width:180px;${es}">${i.numero||'—'}</td>
+      <td onclick="editKitCell(this,'${i.handle}','dataEnvio','${(i.dataEnvio||'').replace(/'/g,"\\'")}')" style="font-size:11px;white-space:nowrap;color:var(--muted);${es}">${i.dataEnvio||'—'}</td>
       <td>
         <button onclick="toggleKitConfirmado('${i.handle}')" style="${confirmStyle};padding:3px 8px;border-radius:5px;font-size:10px;font-weight:700;cursor:pointer">
           ${i.confirmou?'✓ Sim':'Não'}
         </button>
       </td>
-      <td onclick="editKitCell(this,'${i.handle}','obs','${(i.obs||'').replace(/'/g,"\\'")}')" style="font-size:10.5px;color:var(--muted);max-width:120px;cursor:pointer;border-bottom:1px dashed var(--border2)">${(i.obs||'').slice(0,50)}</td>
+      <td onclick="editKitCell(this,'${i.handle}','obs','${(i.obs||'').replace(/'/g,"\\'")}')" style="font-size:10.5px;color:var(--muted);max-width:120px;${es}">${(i.obs||'').slice(0,50)}</td>
       <td>
-        <select onchange="setKitStatus('${i.handle}',this.value)" style="background:var(--surface3);border:1px solid var(--border);border-radius:5px;padding:3px 6px;font-size:10px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none">
+        <select onchange="setKitStatus('${i.handle}',this.value)" style="${selStyle};padding:3px 6px">
           <option value="enviado" ${i.kitStatus==='enviado'?'selected':''}>✅ Enviado</option>
           <option value="pendente" ${i.kitStatus==='pendente'?'selected':''}>⏳ Pendente</option>
           <option value="problema" ${i.kitStatus==='problema'?'selected':''}>⚠️ Problema</option>
