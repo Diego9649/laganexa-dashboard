@@ -2713,14 +2713,15 @@ function toggleKitConfirmado(handle) {
 }
 
 function setKitStatus(handle, status) {
-  const k = KITS_MAP[handle.toLowerCase()];
-  if(k) {
-    k.kitStatus = status;
-    renderKitsTable();
-    renderKitsEspeciais();
-    renderKitsMesBars();
-    if(window._saveToFirestore) window._saveToFirestore('kits', handle.toLowerCase().replace(/[^a-z0-9]/g,'_'), k);
+  if(!window.KITS_MAP[handle.toLowerCase()]) {
+    window.KITS_MAP[handle.toLowerCase()] = {handle, kitStatus:'pendente', kitObs:'', dataEnvio:'', confirmou:false, especial:''};
   }
+  const k = window.KITS_MAP[handle.toLowerCase()];
+  k.kitStatus = status;
+  renderKitsTable();
+  renderKitsEspeciais();
+  renderKitsMesBars();
+  if(window._saveToFirestore) window._saveToFirestore('kits', handle.toLowerCase().replace(/[^a-z0-9]/g,'_'), k);
 }
 
 function renderKitsTable() {
