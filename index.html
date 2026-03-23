@@ -2808,9 +2808,9 @@ function renderKitsTable() {
         </span>
       </td>
       <td onclick="editKitCell(this,'${i.handle}','kitObs','${(i.kitObs||'').replace(/'/g,"\\'")}')" style="font-size:11px;max-width:160px;color:${i.especial?'#FCD34D':'var(--muted)'};cursor:pointer;border-bottom:1px dashed var(--border2)">${i.kitObs||'—'}</td>
-      <td style="font-size:11px;color:var(--muted)">${i.cidade?i.cidade+' ':''}${i.uf||''}</td>
-      <td style="font-size:10px;color:var(--muted2);max-width:180px">${(i.numero||'')+' '+(i.complemento||'')}</td>
-      <td style="font-size:11px;white-space:nowrap;color:var(--muted)">${i.dataEnvio||'—'}</td>
+      <td onclick="editKitCell(this,'${i.handle}','cidade','${(i.cidade||'').replace(/'/g,"\\'")}')" style="font-size:11px;color:var(--muted);cursor:pointer;border-bottom:1px dashed var(--border2)">${i.cidade||'—'} ${i.uf||''}</td>
+      <td onclick="editKitCell(this,'${i.handle}','numero','${(i.numero||'').replace(/'/g,"\\'")}')" style="font-size:10px;color:var(--muted2);max-width:180px;cursor:pointer;border-bottom:1px dashed var(--border2)">${(i.numero||'—')}</td>
+      <td onclick="editKitCell(this,'${i.handle}','dataEnvio','${(i.dataEnvio||'').replace(/'/g,"\\'")}')" style="font-size:11px;white-space:nowrap;color:var(--muted);cursor:pointer;border-bottom:1px dashed var(--border2)">${i.dataEnvio||'—'}</td>
       <td>
         <button onclick="toggleKitConfirmado('${i.handle}')" style="${confirmStyle};padding:3px 8px;border-radius:5px;font-size:10px;font-weight:700;cursor:pointer">
           ${i.confirmou?'✓ Sim':'Não'}
