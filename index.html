@@ -1484,7 +1484,7 @@ function renderROI3() {
         <div style="font-weight:600;font-size:12px">${i.nome.split(' ').slice(0,2).join(' ')}</div>
         ${i.gold ? '<span class="tag tag-gold" style="font-size:9px">⭐ GOLD</span>' : ''}
       </td>
-      <td><span style="color:var(--laranja);font-family:monospace;font-size:11px">@${i.handle}</span></td>
+      <td onclick="editKitCell(this,'${i.handle}','handle','${i.handle}')" style="cursor:pointer;border-bottom:1px dashed var(--border2)"><span style="color:var(--laranja);font-family:monospace;font-size:11px">@${i.handle}</span></td>
       <td>${cupomBadge}</td>
       <td style="font-size:11px">${i.follows||'—'}</td>
       <td><span class="tag ${i.rede==='Instagram'?'tag-inst':'tag-tt'}">${i.rede==='Instagram'?'📸':'🎵'} ${i.rede}</span></td>
@@ -2796,7 +2796,7 @@ function renderKitsTable() {
     <tr>
       <td style="color:var(--muted);font-size:10px">${idx+1}</td>
       <td>
-        <div style="font-weight:600;font-size:12px">${i.nome.split(' ').slice(0,3).join(' ')}</div>
+        <div onclick="editKitCell(this,'${i.handle}','nome','${(i.nome||'').replace(/'/g,"\\'")}')" style="font-weight:600;font-size:12px;cursor:pointer;border-bottom:1px dashed var(--border2)">${i.nome.split(' ').slice(0,3).join(' ')}</div>
         ${i.gold?'<span class="tag tag-gold" style="font-size:9px">⭐ GOLD</span>':''}
       </td>
       <td><span style="color:var(--laranja);font-family:monospace;font-size:11px">@${i.handle}</span></td>
