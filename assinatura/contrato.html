@@ -97,12 +97,11 @@
         try {
             // LEMBRE-SE: Troque a URL abaixo pela URL da sua API na Vercel após o deploy
              // Localize esta linha no seu script do HTML:
-             const response = await fetch('https://assinatura-smoky.vercel.app/api/send', {
-                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                 body: JSON.stringify(dados)
-             });
-
+            const response = await fetch('https://assinatura-smoky.vercel.app/api/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dados)
+});
             if (response.ok) {
                 alert("Contrato assinado e enviado com sucesso!");
                 signaturePad.clear();
