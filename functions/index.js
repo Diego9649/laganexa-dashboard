@@ -1,12 +1,14 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
+// Inicializa o admin apenas uma vez
 if (!admin.apps.length) {
     admin.initializeApp();
 }
 
 const db = admin.firestore();
 
+// --- WEBHOOK YAMPI (Sua regra atual de vendas/ROI) ---
 exports.yampiWebhook = functions.https.onRequest({
     invoker: "public",
 }, async (req, res) => {
@@ -35,48 +37,42 @@ exports.yampiWebhook = functions.https.onRequest({
         // 2. Filtro de Cupom
         if (!cupomRaw) return res.status(200).send("Pedido sem cupom, ignorado");
 
-        const handle = cupomRaw.toUpperCase(); // Padronizando para Maiúsculas como no CSV
-        const mes = dataPedido.substring(0, 7);
+        const handle = cupomRaw.toLowerCase(); 
+        const mes = dataPedido.substring(0, 7); // Ex: 2026-03
         const docId = `${handle}_${mes}`;
-        
-        // ALTERADO: Nova coleção vendas_cupons
-        const cuponsRef = db.collection("vendas_cupons").doc(idUnico);
+        const roi3Ref = db.collection("roi3").doc(docId);
 
-        // 3. Transação: Acumula receita e calcula ROI3 sobre 555 (185 * 3)
+        // 3. Transação para evitar erros de concorrência (vendas simultâneas)
         await db.runTransaction(async (transaction) => {
-            const doc = await transaction.get(cuponsRef);
+            const doc = await transaction.get(roi3Ref);
             
-            const investimentoFixo = 555; // NOVO CUSTO: 185 * 3
-            const metaROI = 3.0;
-            
-            let dadosAcumulados = {
-                cupom: handle,
-                mes: mes,
-                vendas: 1,
-                receita: valorTotal,
-                meta: metaROI
-            };
+            let novasVendas = 1;
+            let novaReceita = valorTotal;
+            const custoPorVenda = 185; // Seu valor base fixo
 
             if (doc.exists) {
                 const data = doc.data();
-                dadosAcumulados.vendas = (data.vendas || 0) + 1;
-                dadosAcumulados.receita = parseFloat(((data.receita || 0) + valorTotal).toFixed(2));
+                novasVendas = (data.vendas || 0) + 1;
+                novaReceita = (data.receita || 0) + valorTotal;
             }
 
-            // Novo Cálculo do ROI3: Receita / 555
-            const novoRoi3 = dadosAcumulados.receita / investimentoFixo;
-            const percentualProgresso = Math.min((novoRoi3 / metaROI) * 100, 100);
+            // Cálculo do ROI: Receita Total / (Custo Fixo * Quantidade de Vendas)
+            const novoRoi3 = novaReceita / (custoPorVenda * novasVendas);
 
-            transaction.set(cuponsRef, {
-                ...dadosAcumulados,
+            transaction.set(roi3Ref, {
+                handle: handle, // Dashboard usa 'handle'
+                cupom: handle,
+                mes: mes,
+                vendas: novasVendas,
+                receita: parseFloat(novaReceita.toFixed(2)),
                 roi3: parseFloat(novoRoi3.toFixed(2)),
-                progresso: parseFloat(percentualProgresso.toFixed(2)),
-                "bateu Meta": novoRoi3 >= metaROI, // Nome exato usado no script
+                meta: 3.0,
+                bateuMeta: novoRoi3 >= 3.0,
                 ultimaAtualizacao: admin.firestore.FieldValue.serverTimestamp()
             }, { merge: true });
         });
 
-        // 4. Histórico individual
+        // 4. Log do Pedido Individual (Histórico)
         await db.collection("pedidos").doc(String(numeroPedido)).set({
             numeroPedido,
             handle,
@@ -87,7 +83,6 @@ exports.yampiWebhook = functions.https.onRequest({
             criadoEm: admin.firestore.FieldValue.serverTimestamp()
         });
 
-        console.log(`✅ Webhook La Ganexa: Cupom ${handle} atualizado na coleção vendas_cupons`);
         return res.status(200).send("Webhook processado com sucesso");
 
     } catch (e) {
