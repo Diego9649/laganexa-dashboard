@@ -10,87 +10,104 @@
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
   import { getFirestore, collection, getDocs, doc, setDoc, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
 
-  // ═══════════════════════════════════════════════════════
-  // 🔑 CONFIGURAÇÃO FIREBASE — substitua com seus valores
-  // Console Firebase → Configurações do projeto → Config do app web
-  // ═══════════════════════════════════════════════════════
-const firebaseConfig = {
-  apiKey: "AIzaSyA2yPDeBXCzIRFuwc-M235b1rIeVixvAa4",
-  authDomain: "laganexa-dashboard.firebaseapp.com",
-  projectId: "laganexa-dashboard",
-  storageBucket: "laganexa-dashboard.firebasestorage.app",
-  messagingSenderId: "794559046268",
-  appId: "1:794559046268:web:1f348b86860b3dc3021ff9",
-  measurementId: "G-RS78BKZFB7"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyA2yPDeBXCzIRFuwc-M235b1rIeVixvAa4",
+    authDomain: "laganexa-dashboard.firebaseapp.com",
+    projectId: "laganexa-dashboard",
+    storageBucket: "laganexa-dashboard.firebasestorage.app",
+    messagingSenderId: "794559046268",
+    appId: "1:794559046268:web:1f348b86860b3dc3021ff9",
+    measurementId: "G-RS78BKZFB7"
+  };
 
   const app = initializeApp(firebaseConfig);
   const db  = getFirestore(app);
 
-  // Disponibiliza globalmente para o resto do script
+  // Globais para o console (F12)
   window._db = db;
   window._fsCollection = collection;
   window._fsDocs = getDocs;
-  window._fsDoc = doc;
-  window._fsSet = setDoc;
-  window._fsSnapshot = onSnapshot;
-  window._fsQuery = query;
-  window._fsOrderBy = orderBy;
 
-  // Carrega dados do Firestore ao iniciar
   window._loadFirestoreData = async function() {
     try {
-      updateSyncStatus('syncing');
-      const abas = ['influenciadores','kits','roi3','agenda','checklist','postagens'];
+      if (typeof updateSyncStatus === 'function') updateSyncStatus('syncing');
+      
+      // ATENÇÃO: Mudamos 'roi3' para 'vendas_cupons' para pegar os 272 registros
+      const abas = ['influenciadores','kits','vendas_cupons','agenda','checklist','postagens'];
       const result = {};
 
       await Promise.all(abas.map(async aba => {
-        const snap = await getDocs(collection(db, aba));
-        result[aba] = snap.docs.map(d => ({id: d.id, ...d.data()}));
+        try {
+          const snap = await getDocs(collection(db, aba));
+          result[aba] = snap.docs.map(d => ({id: d.id, ...d.data()}));
+        } catch (e) {
+          console.warn(`Erro na aba ${aba}:`, e.message);
+          result[aba] = [];
+        }
       }));
 
-      // Mescla dados do Firestore com os dados locais (Firestore tem prioridade se configurado)
+      // 1. Carrega os Influenciadores (Base de nomes/telefones)
       if (result.influenciadores && result.influenciadores.length > 0) {
         window.INF = result.influenciadores;
         console.log(`✅ Firebase: ${result.influenciadores.length} influenciadores carregados`);
       }
-      if (result.roi3 && result.roi3.length > 0) {
-        window.ROI3_DATA = result.roi3;
-        console.log(`✅ Firebase: ${result.roi3.length} registros ROI3 carregados`);
-      }
-      if (result.kits && result.kits.length > 0) {
-        result.kits.forEach(k => { if(k.handle) window.KITS_MAP[k.handle.toLowerCase()] = k; });
-        console.log(`✅ Firebase: ${result.kits.length} kits carregados`);
+
+      // 2. Processa os dados de Vendas/ROI (A nova coleção)
+      if (result.vendas_cupons && result.vendas_cupons.length > 0) {
+        // Mapeia para o formato que o seu renderROI3 espera
+        window.ROI3_DATA = result.vendas_cupons.map(item => ({
+          ...item,
+          handle: item.cupom || item.handle,
+          valor: item.receita || 0,
+          quantidade: item.vendas || 0,
+          bateuMeta: item.bateuMeta !== undefined ? item.bateuMeta : (item.roi3 >= 3)
+        }));
+
+        // MESCLA os números dentro da lista gigante window.INF para não dar "undefined"
+        if (window.INF) {
+            window.ROI3_DATA.forEach(data => {
+                const inf = window.INF.find(i => i.handle === data.handle || i.handle === `@${data.handle}`);
+                if (inf) Object.assign(inf, data);
+            });
+        }
+        console.log(`✅ Firebase: ${window.ROI3_DATA.length} cupons de Março carregados`);
       }
 
-      updateSyncStatus('ok');
-      // Re-renderiza tudo com dados do Firebase
-      if (typeof buildDashboard === 'function') {
-        buildDashboard();
-        buildInfluenciadores();
-        buildGold();
-        buildCobrados();
-        renderROI3();
+      if (result.kits && result.kits.length > 0) {
+        if (!window.KITS_MAP) window.KITS_MAP = {};
+        result.kits.forEach(k => { if(k.handle) window.KITS_MAP[k.handle.toLowerCase()] = k; });
       }
+
+      if (typeof updateSyncStatus === 'function') updateSyncStatus('ok');
+
+      // 3. Renderização Segura
+      if (typeof buildDashboard === 'function') {
+        // Garante que o filtro do ROI3 exista antes de renderizar
+        if (window.roi3Filter === undefined) window.roi3Filter = 'todos';
+        
+        buildDashboard();
+        if (typeof buildInfluenciadores === 'function') buildInfluenciadores();
+        if (typeof buildGold === 'function') buildGold();
+        if (typeof buildCobrados === 'function') buildCobrados();
+        if (typeof renderROI3 === 'function') renderROI3();
+      }
+
     } catch(e) {
-      console.warn('Firebase não configurado ou sem conexão — usando dados locais:', e.message);
-      updateSyncStatus('local');
+      console.error('Erro crítico no carregamento:', e);
+      if (typeof updateSyncStatus === 'function') updateSyncStatus('local');
     }
   };
 
-  // Salvar edição de campo no Firestore
   window._saveToFirestore = async function(colecao, id, dados) {
     try {
       await setDoc(doc(db, colecao, id), dados, { merge: true });
-      updateSyncStatus('ok');
       return true;
     } catch(e) {
-      console.warn('Erro ao salvar no Firestore:', e.message);
+      console.error('Erro ao salvar:', e.message);
       return false;
     }
   };
 
-  // Inicia carregamento quando DOM estiver pronto
   document.addEventListener('DOMContentLoaded', () => {
     setTimeout(window._loadFirestoreData, 500);
   });
