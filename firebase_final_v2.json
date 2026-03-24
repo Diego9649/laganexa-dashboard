@@ -1,0 +1,2450 @@
+[
+  {
+    "bateu Meta": true,
+    "cupom": "INICIO20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 180562.3,
+    "roi3": 325.34,
+    "vendas": 815
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "BEMVINDO10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 37824.99,
+    "roi3": 68.15,
+    "vendas": 277
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "10OFF",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 31423.06,
+    "roi3": 56.62,
+    "vendas": 261
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "DESCONTO10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 28269.79,
+    "roi3": 50.94,
+    "vendas": 238
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "Primeiracompra",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 16208.05,
+    "roi3": 29.2,
+    "vendas": 119
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "CARIANI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 10050.93,
+    "roi3": 18.11,
+    "vendas": 64
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "CM15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 7919.47,
+    "roi3": 14.27,
+    "vendas": 56
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "BEMVINDO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 7688.7,
+    "roi3": 13.85,
+    "vendas": 54
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "DEGUSTACAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 10108.0,
+    "roi3": 18.21,
+    "vendas": 44
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "NOVOR30",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 5860.6,
+    "roi3": 10.56,
+    "vendas": 42
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "CONSUMIDOR20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 8163.91,
+    "roi3": 14.71,
+    "vendas": 40
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "CONSUMIDOR",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 7797.76,
+    "roi3": 14.05,
+    "vendas": 38
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "SABOOR25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 5725.98,
+    "roi3": 10.32,
+    "vendas": 29
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "MONI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 2811.86,
+    "roi3": 5.07,
+    "vendas": 22
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "10THIAGO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 2858.32,
+    "roi3": 5.15,
+    "vendas": 21
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "MULHER30",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 5395.4,
+    "roi3": 9.72,
+    "vendas": 21
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "CUPOMR20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 4432.16,
+    "roi3": 7.99,
+    "vendas": 20
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "DESCONTO20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 2463.27,
+    "roi3": 4.44,
+    "vendas": 19
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "FINALIZA25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 3742.9,
+    "roi3": 6.74,
+    "vendas": 18
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "FIDELIZAR",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 4360.25,
+    "roi3": 7.86,
+    "vendas": 18
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "30AMIGOS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 3546.64,
+    "roi3": 6.39,
+    "vendas": 17
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "CARRINHO25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 2762.34,
+    "roi3": 4.98,
+    "vendas": 16
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "FRETECAIU",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 3072.4,
+    "roi3": 5.54,
+    "vendas": 15
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "15OFF",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 2352.69,
+    "roi3": 4.24,
+    "vendas": 15
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "ISAOLIVEIRA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 2136.69,
+    "roi3": 3.85,
+    "vendas": 14
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "AGORA30",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 3249.66,
+    "roi3": 5.86,
+    "vendas": 12
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "marivolkers15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1634.41,
+    "roi3": 2.94,
+    "vendas": 11
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "FRETEBAIXO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 2233.01,
+    "roi3": 4.02,
+    "vendas": 10
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ESPECIAL",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1516.87,
+    "roi3": 2.73,
+    "vendas": 10
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "LAURA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1712.52,
+    "roi3": 3.09,
+    "vendas": 9
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "PISTACHEOFF",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1986.54,
+    "roi3": 3.58,
+    "vendas": 9
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "THIAGORO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1172.7,
+    "roi3": 2.11,
+    "vendas": 8
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10TOP",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1112.99,
+    "roi3": 2.01,
+    "vendas": 8
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GRATIDAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1233.32,
+    "roi3": 2.22,
+    "vendas": 8
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "SUPERXANDAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1057.74,
+    "roi3": 1.91,
+    "vendas": 8
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BSATOS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 983.64,
+    "roi3": 1.77,
+    "vendas": 7
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "VOLTALOGO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1758.38,
+    "roi3": 3.17,
+    "vendas": 7
+  },
+  {
+    "bateu Meta": true,
+    "cupom": "AMENDOIM25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1781.2,
+    "roi3": 3.21,
+    "vendas": 7
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CUPOM22",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1630.05,
+    "roi3": 2.94,
+    "vendas": 7
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LUKOBER",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1280.39,
+    "roi3": 2.31,
+    "vendas": 7
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VOLTA25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1525.97,
+    "roi3": 2.75,
+    "vendas": 7
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "NUTRILIA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 834.77,
+    "roi3": 1.5,
+    "vendas": 7
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "IGTEST01!",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 4.25,
+    "roi3": 0.01,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "AGORA20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1450.09,
+    "roi3": 2.61,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MADRUGADA15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 890.3,
+    "roi3": 1.6,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GANEXA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1435.49,
+    "roi3": 2.59,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "INAE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 591.94,
+    "roi3": 1.07,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CACELLA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 859.86,
+    "roi3": 1.55,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ALEXIA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 871.44,
+    "roi3": 1.57,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "REABASTECE20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1658.32,
+    "roi3": 2.99,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BABIDEBEM10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1037.7,
+    "roi3": 1.87,
+    "vendas": 6
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "QUERO20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 529.44,
+    "roi3": 0.95,
+    "vendas": 5
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "RECOMPRA25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 956.83,
+    "roi3": 1.72,
+    "vendas": 5
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ANNAPERSONAL",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 440.9,
+    "roi3": 0.79,
+    "vendas": 5
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "SIMONE10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1107.02,
+    "roi3": 1.99,
+    "vendas": 5
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "NOTICIASMAROMBA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 620.33,
+    "roi3": 1.12,
+    "vendas": 5
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LUANA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 447.26,
+    "roi3": 0.81,
+    "vendas": 5
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "APPLAGANEXA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 545.88,
+    "roi3": 0.98,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LUDABREU",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 727.7,
+    "roi3": 1.31,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "FENIX",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 577.79,
+    "roi3": 1.04,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GYMANINHA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 428.58,
+    "roi3": 0.77,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "APROVEITE20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 701.82,
+    "roi3": 1.26,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ANACARLA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 439.36,
+    "roi3": 0.79,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "Danimoraes",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 503.54,
+    "roi3": 0.91,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "AMANDAFIT",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 627.23,
+    "roi3": 1.13,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "SABOR15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 1018.67,
+    "roi3": 1.84,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "THOMAS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 564.17,
+    "roi3": 1.02,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BEAOSUNA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 493.7,
+    "roi3": 0.89,
+    "vendas": 4
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "IZZACOMZ",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 281.21,
+    "roi3": 0.51,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARI10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 417.41,
+    "roi3": 0.75,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CRYSTAL",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 521.16,
+    "roi3": 0.94,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GABIBRAZAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 469.83,
+    "roi3": 0.85,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "PISTACHE2X",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 366.12,
+    "roi3": 0.66,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "DESCONTAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 536.41,
+    "roi3": 0.97,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GOMMEZ",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 328.13,
+    "roi3": 0.59,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VOLTA33",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 515.73,
+    "roi3": 0.93,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "TAMIS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 421.77,
+    "roi3": 0.76,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GIKOPPE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 360.62,
+    "roi3": 0.65,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VOLTA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 645.73,
+    "roi3": 1.16,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "SOMMELIER",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 606.69,
+    "roi3": 1.09,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CAIKE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 983.26,
+    "roi3": 1.77,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "APETITOU",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 441.85,
+    "roi3": 0.8,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MEUSAMIGOS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 612.26,
+    "roi3": 1.1,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10HOJE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 738.8,
+    "roi3": 1.33,
+    "vendas": 3
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "DESCONTO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 601.28,
+    "roi3": 1.08,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "TAYKOLLROSS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 398.76,
+    "roi3": 0.72,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VAMOSCOMEROQUE10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 342.16,
+    "roi3": 0.62,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CUPOM",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 240.22,
+    "roi3": 0.43,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GABI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 255.75,
+    "roi3": 0.46,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "PRONTO35",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 479.29,
+    "roi3": 0.86,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "DRADANI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 324.49,
+    "roi3": 0.58,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10SOSODALBELLO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 281.94,
+    "roi3": 0.51,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "DJENIFFER",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 178.66,
+    "roi3": 0.32,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "PROJETODAFNY",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 409.96,
+    "roi3": 0.74,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BESTSGANEXA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 375.37,
+    "roi3": 0.68,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GNOMO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 245.59,
+    "roi3": 0.44,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "JOHANN",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 263.26,
+    "roi3": 0.47,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARIBPM",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 168.06,
+    "roi3": 0.3,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BIANCAPINHO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 118.02,
+    "roi3": 0.21,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CALATANCE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 223.18,
+    "roi3": 0.4,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ALE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 370.98,
+    "roi3": 0.67,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "RIVELLI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 246.43,
+    "roi3": 0.44,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARIBPM",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 168.06,
+    "roi3": 0.3,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "eyllaneres",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 132.58,
+    "roi3": 0.24,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LIVIA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 406.98,
+    "roi3": 0.73,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "SUSPIRO15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 188.74,
+    "roi3": 0.34,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BOASVINDAS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 343.22,
+    "roi3": 0.62,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "DAI10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 576.86,
+    "roi3": 1.04,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "EMAIL15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 467.39,
+    "roi3": 0.84,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CALATANCE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 223.18,
+    "roi3": 0.4,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "DRADANI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 324.49,
+    "roi3": 0.58,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LAGANEXA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 196.15,
+    "roi3": 0.35,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 283.05,
+    "roi3": 0.51,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "CARDOSOBY",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 221.73,
+    "roi3": 0.4,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "PRONTO35",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 479.29,
+    "roi3": 0.86,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GABI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 255.75,
+    "roi3": 0.46,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "TATI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 187.18,
+    "roi3": 0.34,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VAMOSCOMEROQUE10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 342.16,
+    "roi3": 0.62,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "PERIM",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 363.75,
+    "roi3": 0.66,
+    "vendas": 2
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZPUIORXT10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 94.17,
+    "roi3": 0.17,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VALERY10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 76.8,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZVHUQY8Q98",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 425.77,
+    "roi3": 0.77,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZVYTF7YBP3",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 564.81,
+    "roi3": 1.02,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MariVaranda",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 63.23,
+    "roi3": 0.11,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10SHEILA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 242.96,
+    "roi3": 0.44,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BIANCANASCIMENTO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 150.62,
+    "roi3": 0.27,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 28.16,
+    "roi3": 0.05,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10GANEXA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 178.94,
+    "roi3": 0.32,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "JUMERE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 145.22,
+    "roi3": 0.26,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZK6O9O3OHN",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 158.75,
+    "roi3": 0.29,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LEANDRO75",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 169.24,
+    "roi3": 0.3,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ7BDWDFI3S",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 243.26,
+    "roi3": 0.44,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZTTC6M6314",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 218.94,
+    "roi3": 0.39,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "KINIS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 155.15,
+    "roi3": 0.28,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GIULIANUTRI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 108.15,
+    "roi3": 0.19,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BABS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 69.68,
+    "roi3": 0.13,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LUCIANA20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 136.44,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "mdim",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 87.86,
+    "roi3": 0.16,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARIAEDUARDA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 141.22,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ2MK0NUQUC",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 599.95,
+    "roi3": 1.08,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10MGOMES85",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 287.47,
+    "roi3": 0.52,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ALE10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 180.81,
+    "roi3": 0.33,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BIABOEKE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 251.63,
+    "roi3": 0.45,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GANHE15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 314.33,
+    "roi3": 0.57,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "HORTA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 118.38,
+    "roi3": 0.21,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZW41FUZOW4",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 141.63,
+    "roi3": 0.26,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ5HMESJQI8",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 138.6,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VIDAL",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 28.56,
+    "roi3": 0.05,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LUCIA25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 57.72,
+    "roi3": 0.1,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "Neide",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 64.36,
+    "roi3": 0.12,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "IGOR10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 110.2,
+    "roi3": 0.2,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "TATICARIANI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 132.87,
+    "roi3": 0.24,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "JAPA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 75.04,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ8RMFILIO9",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 77.85,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZULB64ZZGX",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 84.69,
+    "roi3": 0.15,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ZEBINI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 186.86,
+    "roi3": 0.34,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZNB5BUO8BT",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 124.41,
+    "roi3": 0.22,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZMEXHWOM0C",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 98.53,
+    "roi3": 0.18,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZDZVM53VJ1",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 77.49,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZAM3ZQBLP6",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 169.53,
+    "roi3": 0.31,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ1P4HLT9IX",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 133.34,
+    "roi3": 0.24,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZANO0YZDLS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 186.13,
+    "roi3": 0.34,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZAQETXP79F",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 263.44,
+    "roi3": 0.47,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "JOY",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 76.54,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ936F0KT3X",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 232.96,
+    "roi3": 0.42,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GABRIELLERA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 123.85,
+    "roi3": 0.22,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZS47XX0UAF",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 142.66,
+    "roi3": 0.26,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "THAISF01",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 181.49,
+    "roi3": 0.33,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GM5",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 92.29,
+    "roi3": 0.17,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "RSUSP15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 172.08,
+    "roi3": 0.31,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZE23S7C2NO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 85.52,
+    "roi3": 0.15,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZBKNRV1UBH",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 116.26,
+    "roi3": 0.21,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10TATIGUERREIRO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 29.16,
+    "roi3": 0.05,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 124.13,
+    "roi3": 0.22,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ0NGLRZPB6",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 110.43,
+    "roi3": 0.2,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ90KYZILJ3",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 474.29,
+    "roi3": 0.85,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARIA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 222.73,
+    "roi3": 0.4,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ISASAPAG",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 206.83,
+    "roi3": 0.37,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ847LN2MOT",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 195.05,
+    "roi3": 0.35,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZB4M1CNXJU",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 78.58,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10THAYTHUANA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 215.96,
+    "roi3": 0.39,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ3FEGU6N1B",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 286.41,
+    "roi3": 0.52,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZI6JDV8RIH",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 157.94,
+    "roi3": 0.28,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ROCHA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 331.9,
+    "roi3": 0.6,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ARAGAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 403.37,
+    "roi3": 0.73,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "JOTA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 126.41,
+    "roi3": 0.23,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZXHT6KMP0C",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 130.47,
+    "roi3": 0.24,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10DESCONTA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 101.66,
+    "roi3": 0.18,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10LAGANEXA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 223.02,
+    "roi3": 0.4,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZSTQHMRYOY",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 142.77,
+    "roi3": 0.26,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ7YLIOC3TL",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 136.61,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "roque10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 110.2,
+    "roi3": 0.2,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "FECHA20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 202.7,
+    "roi3": 0.37,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZOH0LPPL8B",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 98.04,
+    "roi3": 0.18,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ8TQOE1NFW",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 278.76,
+    "roi3": 0.5,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ2RR5WOGKS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 151.1,
+    "roi3": 0.27,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZIC4XW3YPS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 69.84,
+    "roi3": 0.13,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "SOTEIXEIRA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 87.96,
+    "roi3": 0.16,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ2T1CJH625",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 115.14,
+    "roi3": 0.21,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZUE73VHVLA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 99.43,
+    "roi3": 0.18,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZUE73VHVLA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 99.43,
+    "roi3": 0.18,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "roque10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 110.2,
+    "roi3": 0.2,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZXHT6KMP0C",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 130.47,
+    "roi3": 0.24,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "KINIS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 155.15,
+    "roi3": 0.28,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ2BACCYLI3",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 286.47,
+    "roi3": 0.52,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZT65ZM9HUE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 198.85,
+    "roi3": 0.36,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10DESCONTA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 101.66,
+    "roi3": 0.18,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZBKNRV1UBH",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 116.26,
+    "roi3": 0.21,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10MGOMES85",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 287.47,
+    "roi3": 0.52,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VOLTA30",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 211.87,
+    "roi3": 0.38,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10LAGANEXA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 223.02,
+    "roi3": 0.4,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GABRIELLERA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 123.85,
+    "roi3": 0.22,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "JAPA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 75.04,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "HORTA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 118.38,
+    "roi3": 0.21,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARIAEDUARDA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 141.22,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LUCIANA20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 136.44,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 28.16,
+    "roi3": 0.05,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "VALERY10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 76.8,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZK2W9RAGUU",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 213.19,
+    "roi3": 0.38,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "NAIANY",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 203.36,
+    "roi3": 0.37,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "maisleve5",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 103.91,
+    "roi3": 0.19,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZE23S7C2NO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 85.52,
+    "roi3": 0.15,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ90KYZILJ3",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 474.29,
+    "roi3": 0.85,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GM5",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 92.29,
+    "roi3": 0.17,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10TATIGUERREIRO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 29.16,
+    "roi3": 0.05,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZM658YDBJS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 319.0,
+    "roi3": 0.57,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BEZAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 73.15,
+    "roi3": 0.13,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZBN244U6LC",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 148.79,
+    "roi3": 0.27,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "JUCAMPOS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 135.3,
+    "roi3": 0.24,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "NOVA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 91.99,
+    "roi3": 0.17,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "EXCLUSIVO20",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 160.33,
+    "roi3": 0.29,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10CARTAOAZUL",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 136.54,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "DANI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 93.07,
+    "roi3": 0.17,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ05NDATQXT",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 120.75,
+    "roi3": 0.22,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "FELIZNIVER",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 61.9,
+    "roi3": 0.11,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ2T1CJH625",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 115.14,
+    "roi3": 0.21,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZJ9VFUR8HM",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 254.67,
+    "roi3": 0.46,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "SOTEIXEIRA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 87.96,
+    "roi3": 0.16,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ2RR5WOGKS",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 151.1,
+    "roi3": 0.27,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZSTQHMRYOY",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 142.77,
+    "roi3": 0.26,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ARAGAO",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 403.37,
+    "roi3": 0.73,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10THAYTHUANA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 215.96,
+    "roi3": 0.39,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZB4M1CNXJU",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 78.58,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ847LN2MOT",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 195.05,
+    "roi3": 0.35,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MARIA10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 222.73,
+    "roi3": 0.4,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ0NGLRZPB6",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 110.43,
+    "roi3": 0.2,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZJMLGGVQH6",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 203.34,
+    "roi3": 0.37,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZM6ELZHAV5",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 168.18,
+    "roi3": 0.3,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "THAISF01",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 181.49,
+    "roi3": 0.33,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "BIABOEKE",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 251.63,
+    "roi3": 0.45,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZAQETXP79F",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 263.44,
+    "roi3": 0.47,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZDZVM53VJ1",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 77.49,
+    "roi3": 0.14,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ZEBINI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 186.86,
+    "roi3": 0.34,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZULB64ZZGX",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 84.69,
+    "roi3": 0.15,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "IGOR10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 110.2,
+    "roi3": 0.2,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LUCIA25",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 57.72,
+    "roi3": 0.1,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ5HMESJQI8",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 138.6,
+    "roi3": 0.25,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZW41FUZOW4",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 141.63,
+    "roi3": 0.26,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GANHE15",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 314.33,
+    "roi3": 0.57,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "ALE10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 180.81,
+    "roi3": 0.33,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ18WLT0GT5",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 97.9,
+    "roi3": 0.18,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "GIULIANUTRI",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 108.15,
+    "roi3": 0.19,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZ7BDWDFI3S",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 243.26,
+    "roi3": 0.44,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "LEANDRO75",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 169.24,
+    "roi3": 0.3,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZK6O9O3OHN",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 158.75,
+    "roi3": 0.29,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10GANEXA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 178.94,
+    "roi3": 0.32,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "10SHEILA",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 242.96,
+    "roi3": 0.44,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MariVaranda",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 63.23,
+    "roi3": 0.11,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZVYTF7YBP3",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 564.81,
+    "roi3": 1.02,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZVHUQY8Q98",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 425.77,
+    "roi3": 0.77,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZPUIORXT10",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 94.17,
+    "roi3": 0.17,
+    "vendas": 1
+  },
+  {
+    "bateu Meta": false,
+    "cupom": "MTZI0ZFQSD5A",
+    "mes": "2026-03",
+    "meta": 3,
+    "receita": 140.65,
+    "roi3": 0.25,
+    "vendas": 1
+  }
+]

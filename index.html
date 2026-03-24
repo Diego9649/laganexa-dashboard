@@ -1230,45 +1230,46 @@ window.INF = [
 ];
 
 // ═══════════════════════════════════════════════════════════
-//  ROI3 DATA — preenchido via Yamp API ou manualmente
+//  ROI3 DATA — Conexão Real Firebase
 // ═══════════════════════════════════════════════════════════
-// Estrutura: {handle, mes:"2026-03", roi3:4.2, vendas:12, receita:840, meta:3.0, bateuMeta:true}
+
 window.ROI3_DATA = [];
-// Exemplo de dados mockados para demonstração — serão substituídos pelo Firebase/Yamp
-const ROI3_MOCK = [
-  {handle:"doutorahmad",    mes:"2026-03", roi3:5.2, vendas:28, receita:2240, meta:3.0, bateuMeta:true},
-  {handle:"alineantiqueira",mes:"2026-03", roi3:4.8, vendas:22, receita:1760, meta:3.0, bateuMeta:true},
-  {handle:"pain_babs",      mes:"2026-03", roi3:2.1, vendas:9,  receita:720,  meta:3.0, bateuMeta:false},
-  {handle:"babimaronna",    mes:"2026-03", roi3:6.3, vendas:35, receita:2800, meta:3.0, bateuMeta:true},
-  {handle:"a_carlla",       mes:"2026-03", roi3:3.5, vendas:18, receita:1440, meta:3.0, bateuMeta:true},
-  {handle:"gym_aninha",     mes:"2026-03", roi3:1.8, vendas:7,  receita:560,  meta:3.0, bateuMeta:false},
-  {handle:"brunacardosobru",mes:"2026-03", roi3:4.1, vendas:20, receita:1600, meta:3.0, bateuMeta:true},
-  {handle:"bruninhonoficial",mes:"2026-03",roi3:7.2, vendas:45, receita:3600, meta:3.0, bateuMeta:true},
-  {handle:"thaycouuto",     mes:"2026-03", roi3:8.5, vendas:62, receita:4960, meta:3.0, bateuMeta:true},
-  {handle:"oxiyasss",       mes:"2026-03", roi3:2.9, vendas:14, receita:1120, meta:3.0, bateuMeta:false},
-  {handle:"tavares.biaa",   mes:"2026-03", roi3:5.7, vendas:30, receita:2400, meta:3.0, bateuMeta:true},
-  {handle:"brendabianch",   mes:"2026-03", roi3:3.2, vendas:16, receita:1280, meta:3.0, bateuMeta:true},
-  // Mês anterior para detectar recorrência
-  {handle:"pain_babs",      mes:"2026-02", roi3:2.3, vendas:10, receita:800,  meta:3.0, bateuMeta:false},
-  {handle:"gym_aninha",     mes:"2026-02", roi3:1.5, vendas:6,  receita:480,  meta:3.0, bateuMeta:false},
-  {handle:"oxiyasss",       mes:"2026-02", roi3:3.1, vendas:15, receita:1200, meta:3.0, bateuMeta:true},
-];
-// Usa mock se Firebase não estiver configurado
-if (window.ROI3_DATA.length === 0) window.ROI3_DATA = ROI3_MOCK;
 
-// Configuração da API Yamp (substituir com suas credenciais)
-const YAMP_CONFIG = {
-  // ⚠️ IMPORTANTE: nunca exponha chaves de API no frontend em produção!
-  // Use o Apps Script do Google Sheets para fazer as chamadas à Yamp.
-  // O Apps Script salva os resultados no Firestore, que o dashboard lê.
-  endpoint: 'https://api.yamp.com.br/v1', // confirmar com Yamp
-  configured: false // mude para true após configurar o Apps Script
-};
+// Inicializa a escuta em tempo real do Firebase na coleção CORRETA
+const unsub = db.collection("vendas_cupons")
+    .where("mes", "==", "2026-03") // Filtra apenas para o mês que subimos
+    .onSnapshot((snapshot) => {
+        const updatedData = [];
+        snapshot.forEach((doc) => {
+            const data = doc.data();
+            
+            // Ajuste de compatibilidade: o script usou "bateu Meta"
+            // Se o seu dashboard usa "bateuMeta" (sem espaço), criamos um atalho aqui:
+            if (data["bateu Meta"] !== undefined) {
+                data.bateuMeta = data["bateu Meta"];
+            }
+            
+            updatedData.push(data);
+        });
+        
+        // Atualiza a variável global
+        window.ROI3_DATA = updatedData;
 
-// Normaliza cupomStatus: se tem cupom, marca como 'criado'; se não, 'pendente'
-INF.forEach(i => {
-  if (!i.cupomStatus) i.cupomStatus = i.cupom ? 'criado' : 'pendente';
-});
+        // GATILHO: Chama a renderização
+        if (typeof renderDashboard === "function") {
+            renderDashboard(window.ROI3_DATA);
+        }
+        
+        console.log("Dados atualizados via coleção vendas_cupons:", window.ROI3_DATA);
+    }, (error) => {
+        console.error("Erro ao ler Firebase:", error);
+        // Backup caso o Firebase falhe
+        if (typeof ROI3_MOCK !== 'undefined') {
+            window.ROI3_DATA = ROI3_MOCK;
+        }
+    });
+
+// Remova ou comente o ROI3_MOCK original para testar o real
 
 // ── CHECKLIST DATA ────────────────────────────────────────
 const CL=[
@@ -1363,7 +1364,23 @@ function getROI3ForHandle(handle, mes) {
 function renderROI3() {
   const mes = getROI3MesAtual();
   const mesPrev = mes === '2026-03' ? '2026-02' : mes === '2026-02' ? '2026-01' : null;
-
+  
+// Exemplo de como renderizar a barra de progresso para cada influencer
+function renderizarInfluencer(dados) {
+    return `
+        <div class="influencer-card">
+            <span>${dados.handle}</span>
+            <div class="progress-container" style="background: #eee; width: 100%; height: 10px;">
+                <div class="progress-bar" style="
+                    width: ${dados.progresso}%; 
+                    background: ${dados.bateuMeta ? '#4CAF50' : '#FFC107'}; 
+                    height: 100%;">
+                </div>
+            </div>
+            <span>ROI: ${dados.roi3}</span>
+        </div>
+    `;
+}
   // Monta lista com dados ROI3 mesclados com INF
   let lista = INF.map(inf => {
     const r  = getROI3ForHandle(inf.handle, mes);
