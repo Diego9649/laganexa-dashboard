@@ -1256,27 +1256,7 @@ window.INF = [
 
 window.ROI3_DATA = [];
 
-// Inicializa a escuta em tempo real do Firebase
-const unsub = db.collection("roi3_metrics")
-    .onSnapshot((snapshot) => {
-        const updatedData = [];
-        snapshot.forEach((doc) => {
-            updatedData.push(doc.data());
-        });
-        
-        // Atualiza a variável global
-        window.ROI3_DATA = updatedData;
-
-        // GATILHO: Chame aqui a função que renderiza seus gráficos/tabelas
-        if (typeof renderDashboard === "function") {
-            renderDashboard(window.ROI3_DATA);
-        }
-        
-        console.log("Dados atualizados via Firebase:", window.ROI3_DATA);
-    }, (error) => {
-        console.error("Erro ao ler Firebase, usando MOCK:", error);
-        window.ROI3_DATA = ROI3_MOCK; // Backup caso o Firebase falhe
-    });
+// ROI3_DATA é carregado pelo _loadFirestoreData via coleção vendas_cupons
 
 // Remova ou comente o ROI3_MOCK original para testar o real
 
@@ -1328,6 +1308,9 @@ const CL=[
 // ═══════════════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════════════
+// ── FILTROS GLOBAIS ──────────────────────────────────────
+let infFilter = {text:'', tipo:'todos'};
+
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('nav-total').textContent = '● ' + INF.length + ' influenciadores';
   buildDashboard();
@@ -1801,7 +1784,6 @@ function buildDashboard() {
 }
 
 // ── INFLUENCIADORES ──────────────────────────────────────
-let infFilter = {text:'', tipo:'todos'};
 function buildInfluenciadores() { renderInfTable(); }
 function filterInf() { infFilter.text = document.getElementById('inf-search').value; renderInfTable(); }
 function filterInfBy(tipo, btn) {

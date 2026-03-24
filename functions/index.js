@@ -40,7 +40,7 @@ exports.yampiWebhook = functions.https.onRequest({
         const handle = cupomRaw.toLowerCase(); 
         const mes = dataPedido.substring(0, 7); // Ex: 2026-03
         const docId = `${handle}_${mes}`;
-        const roi3Ref = db.collection("roi3").doc(docId);
+        const roi3Ref = db.collection("vendas_cupons").doc(docId);
 
         // 3. Transação para evitar erros de concorrência (vendas simultâneas)
         await db.runTransaction(async (transaction) => {
