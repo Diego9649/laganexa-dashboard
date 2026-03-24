@@ -32,10 +32,11 @@
     try {
       if (typeof updateSyncStatus === 'function') updateSyncStatus('syncing');
       
-      // ATENÇÃO: Mudamos 'roi3' para 'vendas_cupons' para pegar os 272 registros
+      // Lista de coleções no Firebase
       const abas = ['influenciadores','kits','vendas_cupons','agenda','checklist','postagens'];
       const result = {};
 
+      // Carregamento paralelo de todas as abas
       await Promise.all(abas.map(async aba => {
         try {
           const snap = await getDocs(collection(db, aba));
@@ -46,31 +47,34 @@
         }
       }));
 
-      // 1. Carrega os Influenciadores (Base de nomes/telefones)
+      // 1. PRIMEIRO: Carrega a base de influenciadores (330 nomes/telefones)
       if (result.influenciadores && result.influenciadores.length > 0) {
         window.INF = result.influenciadores;
-        console.log(`✅ Firebase: ${result.influenciadores.length} influenciadores carregados`);
       }
 
-      // 2. Processa os dados de Vendas/ROI (A nova coleção)
+      // 2. SEGUNDO: Processa os dados financeiros (ROI3)
       if (result.vendas_cupons && result.vendas_cupons.length > 0) {
-        // Mapeia para o formato que o seu renderROI3 espera
-        window.ROI3_DATA = result.vendas_cupons.map(item => ({
-          ...item,
-          handle: item.cupom || item.handle,
-          valor: item.receita || 0,
-          quantidade: item.vendas || 0,
-          bateuMeta: item.bateuMeta !== undefined ? item.bateuMeta : (item.roi3 >= 3)
-        }));
-
-        // MESCLA os números dentro da lista gigante window.INF para não dar "undefined"
+        window.ROI3_DATA = result.vendas_cupons;
+        
+        // VINCULA os dados financeiros aos influenciadores na lista window.INF
         if (window.INF) {
-            window.ROI3_DATA.forEach(data => {
-                const inf = window.INF.find(i => i.handle === data.handle || i.handle === `@${data.handle}`);
-                if (inf) Object.assign(inf, data);
-            });
+          result.vendas_cupons.forEach(venda => {
+            const handle = venda.cupom || venda.handle;
+            // Busca o influencer na array gigante (com ou sem @)
+            const inf = window.INF.find(i => i.handle === handle || i.handle === `@${handle}`);
+            
+            if (inf) {
+              // Garante que o dashboard antigo entenda os campos novos
+              inf.vendas = venda.vendas || 0;
+              inf.receita = venda.receita || 0;
+              inf.roi3 = venda.roi3 || 0;
+              inf.valor = venda.receita || 0; // Compatibilidade dash antigo
+              inf.quantidade = venda.vendas || 0; // Compatibilidade dash antigo
+              inf.bateuMeta = venda.bateuMeta !== undefined ? venda.bateuMeta : (venda.roi3 >= 3);
+            }
+          });
         }
-        console.log(`✅ Firebase: ${window.ROI3_DATA.length} cupons de Março carregados`);
+        console.log(`✅ Firebase: ${result.vendas_cupons.length} cupons mesclados com a base.`);
       }
 
       if (result.kits && result.kits.length > 0) {
@@ -80,9 +84,9 @@
 
       if (typeof updateSyncStatus === 'function') updateSyncStatus('ok');
 
-      // 3. Renderização Segura
+      // 3. TERCEIRO: Só renderiza após todos os dados estarem mesclados
       if (typeof buildDashboard === 'function') {
-        // Garante que o filtro do ROI3 exista antes de renderizar
+        // Inicialização de segurança para evitar erro de 'undefined' nos filtros
         if (window.roi3Filter === undefined) window.roi3Filter = 'todos';
         
         buildDashboard();
