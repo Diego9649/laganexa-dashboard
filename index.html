@@ -1235,39 +1235,54 @@ window.INF = [
 
 window.ROI3_DATA = [];
 
-// Inicializa a escuta em tempo real do Firebase na coleção CORRETA
-const unsub = db.collection("vendas_cupons")
-    .where("mes", "==", "2026-03") // Filtra apenas para o mês que subimos
-    .onSnapshot((snapshot) => {
-        const updatedData = [];
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-            
-            // Ajuste de compatibilidade: o script usou "bateu Meta"
-            // Se o seu dashboard usa "bateuMeta" (sem espaço), criamos um atalho aqui:
-            if (data["bateu Meta"] !== undefined) {
-                data.bateuMeta = data["bateu Meta"];
-            }
-            
-            updatedData.push(data);
-        });
-        
-        // Atualiza a variável global
-        window.ROI3_DATA = updatedData;
+// Mescla dados do Firestore com os dados locais
+    if (result.influenciadores && result.influenciadores.length > 0) {
+      window.INF = result.influenciadores;
+      console.log(`✅ Firebase: ${result.influenciadores.length} influenciadores carregados`);
+    }
 
-        // GATILHO: Chama a renderização
-        if (typeof renderDashboard === "function") {
-            renderDashboard(window.ROI3_DATA);
-        }
+    if (result.roi3 && result.roi3.length > 0) {
+      // SALVA na variável global de ROI
+      window.ROI3_DATA = result.roi3;
+      
+      // NOVIDADE: Casando os dados de ROI3 com a lista gigante window.INF
+      result.roi3.forEach(item => {
+        const handle = item.cupom || item.handle;
+        if (!handle) return;
         
-        console.log("Dados atualizados via coleção vendas_cupons:", window.ROI3_DATA);
-    }, (error) => {
-        console.error("Erro ao ler Firebase:", error);
-        // Backup caso o Firebase falhe
-        if (typeof ROI3_MOCK !== 'undefined') {
-            window.ROI3_DATA = ROI3_MOCK;
+        // Busca na lista gigante (window.INF)
+        const inf = window.INF.find(i => i.handle === handle || i.handle === `@${handle}`);
+        if (inf) {
+          // Garante compatibilidade: o dash antigo usa 'valor', o novo 'receita'
+          inf.vendas = item.vendas || 0;
+          inf.receita = item.receita || 0;
+          inf.roi3 = item.roi3 || 0;
+          inf.valor = item.receita || 0; 
+          inf.quantidade = item.vendas || 0;
+          inf.bateuMeta = item.bateuMeta ?? (item.roi3 >= 3);
         }
-    });
+      });
+      console.log(`✅ Firebase: ${result.roi3.length} registros ROI3 mesclados com sucesso`);
+    }
+
+    if (result.kits && result.kits.length > 0) {
+      result.kits.forEach(k => { 
+        if(k.handle) window.KITS_MAP[k.handle.toLowerCase()] = k; 
+      });
+      console.log(`✅ Firebase: ${result.kits.length} kits carregados`);
+    }
+
+    updateSyncStatus('ok');
+
+    // Re-renderiza tudo com dados do Firebase
+    if (typeof buildDashboard === 'function') {
+      buildDashboard();
+      buildInfluenciadores();
+      buildGold();
+      buildCobrados();
+      // O renderROI3 agora vai encontrar os dados prontos dentro do window.INF
+      renderROI3();
+    }
 
 // Remova ou comente o ROI3_MOCK original para testar o real
 
