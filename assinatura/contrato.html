@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo de Parceria - La Ganexa</title>
+    <link rel="stylesheet" href="assinatura.css">
+</head>
+<body>
+
+<div class="container">
+    <div id="contrato-texto">
+        <h2>Termo de Aceite de Parceria com Influenciador</h2>
+        <p>Este termo estabelece as condições da parceria comercial entre <strong>La Ganexa Produtos Alimentícios LTDA (CNPJ 31.315.158/0001-84)</strong> e o influenciador identificado abaixo. O aceite poderá ocorrer de forma digital, inclusive via WhatsApp, com plena validade jurídica.</p>
+
+        <h3>1. Natureza da Parceria</h3>
+        <p>A parceria possui natureza exclusivamente comercial, não caracterizando vínculo empregatício, relação trabalhista, subordinação, exclusividade, sociedade ou representação comercial.</p>
+
+        <h3>2. Modelo de Remuneração</h3>
+        <p>A parceria poderá ocorrer por meio de permuta de produtos e/ou comissionamento sobre vendas, calculado exclusivamente a partir de vendas realizadas por meio de cupom ou link individual do influenciador.</p>
+
+        <h3>3. Obrigação de Postagem (Playbook)</h3>
+        <p>O influenciador declara ciência e concordância com o Playbook La Ganexa – O que faz vender, comprometendo-se a cumprir, no mínimo:<br>
+        • 2 (dois) stories por semana<br>
+        • 1 (um) a 2 (dois) reels por mês<br>
+        • Utilização correta de cupom e/ou link fornecido pela marca.</p>
+
+        <h3>4. Ressarcimento por Descumprimento</h3>
+        <p>O não cumprimento das obrigações previstas no Playbook autoriza a La Ganexa a exigir o ressarcimento integral dos produtos fornecidos em permuta, incluindo custo dos produtos e frete. O ressarcimento deverá ser realizado em até 10 (dez) dias após notificação formal.</p>
+
+        <h3>5. Cessão de Direito de Imagem e Conteúdo</h3>
+        <p>O influenciador autoriza a La Ganexa a utilizar sua imagem, nome, voz e os conteúdos produzidos no âmbito da parceria para fins institucionais, comerciais e promocionais, em qualquer mídia ou formato, de forma gratuita, não exclusiva e por tempo indeterminado.</p>
+
+        <h3>6. Livre Rescisão</h3>
+        <p>A parceria poderá ser encerrada por qualquer das partes, a qualquer tempo, sem necessidade de justificativa.</p>
+    </div>
+
+    <form id="form-assinatura">
+        <div class="input-group">
+            <input type="text" id="nome" placeholder="Seu Nome Completo" required>
+        </div>
+        <div class="input-group">
+            <input type="email" id="email-influencer" placeholder="Seu Melhor E-mail" required>
+        </div>
+        
+        <p>Assine abaixo:</p>
+        <div class="signature-wrapper">
+            <canvas id="signature-pad"></canvas>
+        </div>
+        
+        <div class="buttons">
+            <button type="button" id="clear">Limpar Assinatura</button>
+            <button type="submit" id="submit">Assinar e Enviar Contrato</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+<script>
+    const canvas = document.getElementById('signature-pad');
+    const signaturePad = new SignaturePad(canvas);
+
+    // Ajusta o tamanho do canvas para não ficar distorcido
+    function resizeCanvas() {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+        signaturePad.clear(); 
+    }
+
+    window.onresize = resizeCanvas;
+    resizeCanvas();
+
+    document.getElementById('clear').addEventListener('click', () => {
+        signaturePad.clear();
+    });
+
+    document.getElementById('form-assinatura').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (signaturePad.isEmpty()) {
+            return alert("Por favor, forneça sua assinatura antes de enviar.");
+        }
+
+        const btnSubmit = document.getElementById('submit');
+        btnSubmit.disabled = true;
+        btnSubmit.innerText = "Enviando...";
+
+        const dados = {
+            nome: document.getElementById('nome').value,
+            emailInfluencer: document.getElementById('email-influencer').value,
+            assinatura: signaturePad.toDataURL(), 
+            data: new Date().toLocaleDateString('pt-BR')
+        };
+
+        try {
+            // LEMBRE-SE: Troque a URL abaixo pela URL da sua API na Vercel após o deploy
+             // Localize esta linha no seu script do HTML:
+             const response = await fetch('https://assinatura-smoky.vercel.app/api/send', {
+                 method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                 body: JSON.stringify(dados)
+             });
+
+            if (response.ok) {
+                alert("Contrato assinado e enviado com sucesso!");
+                signaturePad.clear();
+                document.getElementById('form-assinatura').reset();
+            } else {
+                alert("Erro ao enviar o contrato. Tente novamente.");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Erro de conexão com o servidor.");
+        } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.innerText = "Assinar e Enviar Contrato";
+        }
+    });
+</script>
+
+</body>
+</html>
