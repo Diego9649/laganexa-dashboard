@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Ganexa — Cadastro de Influenciador</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+  import { getFirestore, collection, getDocs, doc, setDoc, query, where } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA2yPDeBXCzIRFuwc-M235b1rIeVixvAa4",
+    authDomain: "laganexa-dashboard.firebaseapp.com",
+    projectId: "laganexa-dashboard",
+    storageBucket: "laganexa-dashboard.firebasestorage.app",
+    messagingSenderId: "794559046268",
+    appId: "1:794559046268:web:1f348b86860b3dc3021ff9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Verifica se cupom já existe
+  window._verificarCupom = async function(cupom) {
+    if (!cupom || cupom.length < 3) return null;
+    const snap = await getDocs(collection(db, 'influenciadores'));
+    const existe = snap.docs.some(d => {
+      const c = (d.data().cupom || '').toLowerCase();
+      return c === cupom.toLowerCase();
+    });
+    return existe;
+  };
+
+  // Salva novo influenciador
+  window._salvarInfluenciador = async function(dados) {
+    const id = dados.handle.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_' + Date.now();
+    await setDoc(doc(db, 'influenciadores', id), {
+      ...dados,
+      gold: false,
+      tipo: 'PERMUTA',
+      cupomStatus: 'criado',
+      statusRoi: '',
+      reels: '',
+      stories: '',
+      criadoEm: new Date().toISOString(),
+      link: dados.rede === 'Instagram'
+        ? `https://instagram.com/${dados.handle}`
+        : dados.rede === 'Tiktok'
+        ? `https://tiktok.com/@${dados.handle}`
+        : ''
+    });
+  };
+</script>
+<style>
+:root {
+  --bg:#0E0F13;--surface:#16181F;--surface2:#1E2029;--surface3:#252733;
+  --border:#2C2F3E;--border2:#383B4E;--text:#F0F1F5;--muted:#7B7F96;--muted2:#555870;
+  --laranja:#E8952A;--laranja-d:#C8763A;--verde:#34A85A;--erro:#F87171;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;
+  padding:24px 16px;
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(232,149,42,.07) 0%,transparent 50%),
+                   radial-gradient(ellipse at 85% 100%,rgba(59,158,255,.04) 0%,transparent 50%)}
+
+.container{max-width:640px;margin:0 auto}
+
+.logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--laranja),var(--laranja-d));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;
+  box-shadow:0 0 14px rgba(232,149,42,.3);flex-shrink:0}
+.logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--laranja)}
+.logo-sub{font-size:10px;color:var(--muted);letter-spacing:.5px}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px}
+.card-title{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;margin-bottom:4px}
+.card-sub{color:var(--muted);font-size:12px;margin-bottom:24px}
+
+.section-label{font-size:10px;font-weight:700;color:var(--laranja);letter-spacing:.8px;
+  text-transform:uppercase;margin-bottom:12px;margin-top:20px;padding-bottom:6px;
+  border-bottom:1px solid var(--border)}
+.section-label:first-of-type{margin-top:0}
+
+.field-row{display:grid;gap:12px;margin-bottom:12px}
+.field-row.two{grid-template-columns:1fr 1fr}
+.field-row.three{grid-template-columns:1fr 1fr 1fr}
+
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.3px}
+.field input,.field select{
+  background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+  padding:9px 12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;
+  outline:none;transition:border-color .15s;width:100%}
+.field input:focus,.field select:focus{border-color:var(--laranja)}
+.field input::placeholder{color:var(--muted2)}
+.field input.erro{border-color:var(--erro)}
+.field input.ok{border-color:var(--verde)}
+.field-hint{font-size:10px;color:var(--muted2);margin-top:2px}
+.field-hint.erro{color:var(--erro)}
+.field-hint.ok{color:var(--verde)}
+
+.btn{width:100%;padding:13px;background:var(--laranja);color:#fff;border:none;
+  border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:opacity .15s;margin-top:20px}
+.btn:hover{opacity:.88}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+.success{display:none;text-align:center;padding:32px 20px}
+.success-icon{font-size:48px;margin-bottom:12px}
+.success-title{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--verde);margin-bottom:8px}
+.success-sub{color:var(--muted);font-size:13px}
+
+.required{color:var(--laranja);margin-left:2px}
+
+@media(max-width:480px){
+  .field-row.two,.field-row.three{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo-wrap">
+    <div class="logo-icon">🥜</div>
+    <div>
+      <div class="logo-text">La Ganexa</div>
+      <div class="logo-sub">CADASTRO DE INFLUENCIADOR</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <!-- FORMULÁRIO -->
+    <div id="form-wrap">
+      <div class="card-title">Seja bem-vindo! 👋</div>
+      <div class="card-sub">Preencha todos os campos abaixo para iniciar sua parceria com a La Ganexa.</div>
+
+      <!-- DADOS PESSOAIS -->
+      <div class="section-label">Dados pessoais</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Nome completo <span class="required">*</span></label>
+          <input type="text" id="nome" placeholder="Seu nome completo" required/>
+        </div>
+      </div>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>CPF <span class="required">*</span></label>
+          <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" oninput="mascaraCPF(this)"/>
+        </div>
+        <div class="field">
+          <label>Telefone / WhatsApp <span class="required">*</span></label>
+          <input type="text" id="tel" placeholder="(00) 00000-0000" maxlength="15" oninput="mascaraTel(this)"/>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>E-mail <span class="required">*</span></label>
+          <input type="email" id="email" placeholder="seu@email.com"/>
+        </div>
+      </div>
+
+      <!-- REDES SOCIAIS -->
+      <div class="section-label">Redes sociais</div>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>Rede principal <span class="required">*</span></label>
+          <select id="rede">
+            <option value="">Selecione...</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Tiktok">TikTok</option>
+            <option value="Youtube">YouTube</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>@Handle / usuário <span class="required">*</span></label>
+          <input type="text" id="handle" placeholder="@seuusuario" oninput="limparArroba(this)"/>
+          <span class="field-hint" id="handle-hint"></span>
+        </div>
+      </div>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>Seguidores</label>
+          <input type="text" id="follows" placeholder="ex: 45K, 1,2M"/>
+        </div>
+        <div class="field">
+          <label>Cupom desejado <span class="required">*</span></label>
+          <input type="text" id="cupom" placeholder="SEUCUPOM" oninput="verificarCupom(this)" style="text-transform:uppercase"/>
+          <span class="field-hint" id="cupom-hint">Mínimo 4 caracteres, sem espaços</span>
+        </div>
+      </div>
+
+      <!-- ENDEREÇO -->
+      <div class="section-label">Endereço para envio do kit</div>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>CEP <span class="required">*</span></label>
+          <input type="text" id="cep" placeholder="00000-000" maxlength="9" oninput="mascaraCEP(this)" onblur="buscarCEP(this.value)"/>
+          <span class="field-hint" id="cep-hint"></span>
+        </div>
+        <div class="field">
+          <label>UF</label>
+          <input type="text" id="uf" placeholder="SP" maxlength="2" style="text-transform:uppercase"/>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Endereço (rua, número, bairro) <span class="required">*</span></label>
+          <input type="text" id="endereco" placeholder="Rua Exemplo, 123 - Bairro"/>
+        </div>
+      </div>
+
+      <div class="field-row two">
+        <div class="field">
+          <label>Complemento</label>
+          <input type="text" id="complemento" placeholder="Apto 42, Bloco B..."/>
+        </div>
+        <div class="field">
+          <label>Cidade <span class="required">*</span></label>
+          <input type="text" id="cidade" placeholder="São Paulo"/>
+        </div>
+      </div>
+
+      <button class="btn" id="btn-enviar" onclick="enviarFormulario()">Enviar cadastro →</button>
+    </div>
+
+    <!-- SUCESSO -->
+    <div class="success" id="success-wrap">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">Cadastro enviado!</div>
+      <div class="success-sub">Suas informações foram recebidas com sucesso.<br>A equipe da La Ganexa entrará em contato em breve.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── MÁSCARAS ─────────────────────────────────────────────
+function mascaraCPF(el) {
+  let v = el.value.replace(/\D/g,'').substring(0,11);
+  v = v.replace(/(\d{3})(\d)/,'$1.$2');
+  v = v.replace(/(\d{3})(\d)/,'$1.$2');
+  v = v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+  el.value = v;
+}
+
+function mascaraTel(el) {
+  let v = el.value.replace(/\D/g,'').substring(0,11);
+  if(v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{4})/,'($1) $2-$3');
+  else if(v.length > 6) v = v.replace(/(\d{2})(\d{4})(\d+)/,'($1) $2-$3');
+  else if(v.length > 2) v = v.replace(/(\d{2})(\d+)/,'($1) $2');
+  el.value = v;
+}
+
+function mascaraCEP(el) {
+  let v = el.value.replace(/\D/g,'').substring(0,8);
+  v = v.replace(/(\d{5})(\d)/,'$1-$2');
+  el.value = v;
+}
+
+function limparArroba(el) {
+  el.value = el.value.replace('@','').replace(/\s/g,'');
+}
+
+// ── CEP ─────────────────────────────────────────────────
+async function buscarCEP(cep) {
+  cep = cep.replace(/\D/g,'');
+  if(cep.length !== 8) return;
+  const hint = document.getElementById('cep-hint');
+  hint.textContent = 'Buscando...';
+  hint.className = 'field-hint';
+  try {
+    const r = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const d = await r.json();
+    if(d.erro) { hint.textContent = 'CEP não encontrado'; hint.className = 'field-hint erro'; return; }
+    document.getElementById('endereco').value = `${d.logradouro}${d.bairro?', '+d.bairro:''}`;
+    document.getElementById('cidade').value = d.localidade;
+    document.getElementById('uf').value = d.uf;
+    hint.textContent = '✓ Endereço preenchido';
+    hint.className = 'field-hint ok';
+  } catch(e) {
+    hint.textContent = 'Erro ao buscar CEP';
+    hint.className = 'field-hint erro';
+  }
+}
+
+// ── CUPOM ────────────────────────────────────────────────
+let cupomTimer = null;
+async function verificarCupom(el) {
+  el.value = el.value.toUpperCase().replace(/\s/g,'');
+  const hint = document.getElementById('cupom-hint');
+  clearTimeout(cupomTimer);
+
+  if(el.value.length < 4) {
+    hint.textContent = 'Mínimo 4 caracteres, sem espaços';
+    hint.className = 'field-hint';
+    el.className = '';
+    return;
+  }
+
+  hint.textContent = 'Verificando disponibilidade...';
+  hint.className = 'field-hint';
+
+  cupomTimer = setTimeout(async () => {
+    try {
+      const existe = await window._verificarCupom(el.value);
+      if(existe) {
+        hint.textContent = '✗ Cupom já existe — escolha outro';
+        hint.className = 'field-hint erro';
+        el.className = 'erro';
+      } else {
+        hint.textContent = '✓ Cupom disponível!';
+        hint.className = 'field-hint ok';
+        el.className = 'ok';
+      }
+    } catch(e) {
+      hint.textContent = 'Erro ao verificar';
+      hint.className = 'field-hint';
+    }
+  }, 600);
+}
+
+// ── VALIDAÇÃO ────────────────────────────────────────────
+function validar() {
+  const campos = [
+    {id:'nome', label:'Nome completo'},
+    {id:'cpf', label:'CPF'},
+    {id:'tel', label:'Telefone'},
+    {id:'email', label:'E-mail'},
+    {id:'rede', label:'Rede principal'},
+    {id:'handle', label:'@Handle'},
+    {id:'cupom', label:'Cupom'},
+    {id:'cep', label:'CEP'},
+    {id:'endereco', label:'Endereço'},
+    {id:'cidade', label:'Cidade'},
+  ];
+
+  for(const c of campos) {
+    const el = document.getElementById(c.id);
+    if(!el.value.trim()) {
+      alert(`Por favor preencha: ${c.label}`);
+      el.focus();
+      return false;
+    }
+  }
+
+  // Verifica se cupom está ok
+  const cupomEl = document.getElementById('cupom');
+  if(cupomEl.className === 'erro') {
+    alert('O cupom escolhido já existe. Por favor escolha outro.');
+    cupomEl.focus();
+    return false;
+  }
+
+  // Valida email
+  const email = document.getElementById('email').value;
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Por favor informe um e-mail válido.');
+    document.getElementById('email').focus();
+    return false;
+  }
+
+  return true;
+}
+
+// ── ENVIO ────────────────────────────────────────────────
+async function enviarFormulario() {
+  if(!validar()) return;
+
+  const btn = document.getElementById('btn-enviar');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  try {
+    // Verifica cupom uma última vez
+    const cupom = document.getElementById('cupom').value;
+    const existe = await window._verificarCupom(cupom);
+    if(existe) {
+      alert('O cupom escolhido já foi cadastrado por outro influenciador. Por favor escolha outro.');
+      btn.disabled = false;
+      btn.textContent = 'Enviar cadastro →';
+      return;
+    }
+
+    const dados = {
+      nome:        document.getElementById('nome').value.trim(),
+      cpf:         document.getElementById('cpf').value.trim(),
+      tel:         document.getElementById('tel').value.trim(),
+      email:       document.getElementById('email').value.trim(),
+      rede:        document.getElementById('rede').value,
+      handle:      document.getElementById('handle').value.trim(),
+      follows:     document.getElementById('follows').value.trim(),
+      cupom:       cupom,
+      cep:         document.getElementById('cep').value.trim(),
+      endereco:    document.getElementById('endereco').value.trim(),
+      complemento: document.getElementById('complemento').value.trim(),
+      cidade:      document.getElementById('cidade').value.trim(),
+      uf:          document.getElementById('uf').value.trim(),
+      mes:         '',
+      inicio:      '',
+      obs:         '',
+      utm:         '',
+      pilea:       '',
+    };
+
+    await window._salvarInfluenciador(dados);
+
+    document.getElementById('form-wrap').style.display = 'none';
+    document.getElementById('success-wrap').style.display = 'block';
+
+  } catch(e) {
+    console.error(e);
+    alert('Erro ao enviar cadastro. Tente novamente.');
+    btn.disabled = false;
+    btn.textContent = 'Enviar cadastro →';
+  }
+}
+</script>
+</body>
+</html>
