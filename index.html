@@ -1570,11 +1570,18 @@ function getROI3MesAtual() {
 }
 
 function getROI3ForHandle(handle, mes) {
-  return window.ROI3_DATA.find(r =>
+  // Busca pelo handle direto
+  const byHandle = window.ROI3_DATA.find(r =>
     r.handle && r.handle.toLowerCase() === handle.toLowerCase() && r.mes === mes
   );
+  if (byHandle) return byHandle;
+  // Busca pelo cupom do influencer
+  const inf = window.INF ? window.INF.find(i => i.handle && i.handle.toLowerCase() === handle.toLowerCase()) : null;
+  if (!inf || !inf.cupom) return null;
+  return window.ROI3_DATA.find(r =>
+    r.cupom && r.cupom.toLowerCase() === inf.cupom.toLowerCase() && r.mes === mes
+  );
 }
-
 function renderROI3() {
   const mes = getROI3MesAtual();
   const mesPrev = mes === '2026-03' ? '2026-02' : mes === '2026-02' ? '2026-01' : null;
