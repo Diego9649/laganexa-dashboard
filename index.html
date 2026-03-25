@@ -82,6 +82,26 @@
         result.kits.forEach(k => { if(k.handle) window.KITS_MAP[k.handle.toLowerCase()] = k; });
       }
 
+      // Carrega dados de postagens (COB_DATA) do Firebase
+      if (result.postagens && result.postagens.length > 0) {
+        if (!window.COB_DATA) window.COB_DATA = {};
+        result.postagens.forEach(p => {
+          if (p.id && p.id.startsWith('cob_')) {
+            const key = p.id.replace(/^cob_/, '');
+            window.COB_DATA[key] = {
+              feed1: p.feed1 || false,
+              feed2: p.feed2 || false,
+              s1: p.s1 || false,
+              s2: p.s2 || false,
+              s3: p.s3 || false,
+              s4: p.s4 || false,
+              meta: p.meta || '',
+            };
+          }
+        });
+        console.log(`✅ Firebase: ${Object.keys(window.COB_DATA).length} registros de postagens carregados`);
+      }
+
       if (typeof updateSyncStatus === 'function') updateSyncStatus('ok');
 
       // 3. TERCEIRO: Só renderiza após todos os dados estarem mesclados
