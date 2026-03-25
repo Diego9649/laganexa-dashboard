@@ -2227,7 +2227,7 @@ function renderGoldGrid(list) {
 // ── COBRADOS / POSTAGENS ─────────────────────────────────
 if (!window.COB_DATA) window.COB_DATA = {};
 
-function getCobKey(handle, mes) { return handle.toLowerCase() + '_' + mes; }
+function getCobKey(handle, mes) { return (handle||'').toLowerCase() + '_' + (mes||''); }
 
 function getCobData(handle, mes) {
   return window.COB_DATA[getCobKey(handle, mes)] || {feed1:false,feed2:false,s1:false,s2:false,s3:false,s4:false,meta:''};
@@ -2258,7 +2258,7 @@ function saveCobDataMeta(handle, mes, value) {
 function buildCobrados() {
   const mes = document.getElementById('cob-mes-filter')?.value || '2026-03';
   const q = (document.getElementById('cob-search')?.value || '').toLowerCase();
-  const todos = INF.filter(i => !q || [i.nome,i.handle,i.cupom,i.obs].some(v=>v&&v.toLowerCase().includes(q)));
+  const todos = INF.filter(i => i.handle && (!q || [i.nome,i.handle,i.cupom,i.obs].some(v=>v&&v.toLowerCase().includes(q))));
 
   const bateram = todos.filter(i => getCobData(i.handle, mes).meta === 'bateu').length;
   const semMeta = todos.length - bateram;
