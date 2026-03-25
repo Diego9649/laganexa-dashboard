@@ -1758,9 +1758,8 @@ function renderizarInfluencer(dados) {
   `).join('') || '<p style="color:var(--muted);font-size:12px">Todos acima da meta! 🎉</p>';
 
   // Aviso de configuração se sem dados reais
-  if (!YAMP_CONFIG.configured) {
-    document.getElementById('roi3-config-aviso').style.display = 'block';
-  }
+    const avisoEl = document.getElementById('roi3-config-aviso');
+  if (avisoEl) avisoEl.style.display = 'none';
 }
 
 function filterROI3(val) { roi3Search = val; renderROI3(); }
